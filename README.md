@@ -47,7 +47,11 @@ python claude-telegram-bot.py --parear       # mande /parear CODIGO para o bot
 ```
 
 > [!IMPORTANT]
-> **Sem este passo, projeto novo não abre pelo celular.** Na primeira vez em cada pasta, o Claude Code pergunta no PC *"Is this a project you trust?"*. Enquanto ninguém responder, a sessão fica parada e **nunca aparece no app**. Antes de sair de casa, abra cada projeto uma vez no PC (`claude` dentro da pasta, ou `proj nome`) e escolha **Yes, I trust this folder**. Isso vale também para projeto criado com `/novo`. Veja [Pasta nova: a pergunta de confiança](docs/USO.md#pasta-nova-a-pergunta-de-confiança).
+> **Sem este passo, projeto novo não abre pelo celular.** Na primeira vez em cada pasta, o Claude Code pergunta no PC *"Is this a project you trust?"*. Enquanto ninguém responder, a sessão fica parada e **nunca aparece no app**.
+> 1. **Recomendado:** marque as pastas dos seus projetos como confiáveis no `%USERPROFILE%\.claude.json`, com o script de [Pasta nova: a pergunta de confiança](docs/USO.md#recomendado-marcar-as-pastas-como-confiáveis-no-claudejson).
+> 2. **Se não fizer isso:** abra cada projeto uma vez no PC antes de sair de casa (`claude` dentro da pasta, ou `proj nome`) e escolha **Yes, I trust this folder**.
+>
+> Projeto criado com `/novo` fora de casa sempre para na pergunta até você responder no PC.
 
 Passo a passo completo, com criação do bot e solução de problemas: **[Guia de instalação](docs/INSTALACAO.md)**.
 Todos os comandos do bot e do `proj`: **[Guia de uso](docs/USO.md)**.

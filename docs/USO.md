@@ -24,9 +24,38 @@ Quick safety check: Is this a project you created or one you trust?
 
 É uma proteção do Claude Code, e o bot não responde por você. Enquanto ninguém responder no PC, a sessão fica parada e **não aparece no app**. Depois do "Yes", a pasta fica registrada como confiável e a pergunta não volta.
 
-O que fazer:
-- **Projetos que já existem:** antes de sair de casa, abra cada um uma vez no PC (`proj nome` ou `claude` dentro da pasta) e responda **Yes, I trust this folder**.
-- **Projeto criado com `/novo` fora de casa:** a pasta é nova, então a sessão vai parar nessa pergunta. Responda quando chegar ao PC, ou crie o projeto antes, no PC, com `proj` → `0`.
+O Claude Code guarda essa resposta em `%USERPROFILE%\.claude.json`, no campo `projects["C:/caminho/da/pasta"].hasTrustDialogAccepted`.
+
+### Recomendado: marcar as pastas como confiáveis no `.claude.json`
+
+Faça isso uma vez, no PC, com **todas as janelas do Claude Code fechadas** (aberto, ele pode regravar o arquivo por cima). No PowerShell:
+
+```powershell
+Copy-Item "$env:USERPROFILE\.claude.json" "$env:USERPROFILE\.claude.json.bak"   # backup
+@'
+import json, pathlib
+raiz = pathlib.Path.home() / "projetos"   # troque pela sua pasta de projetos
+cfg = pathlib.Path.home() / ".claude.json"
+dados = json.loads(cfg.read_text(encoding="utf-8"))
+for pasta in sorted(raiz.iterdir()):
+    if pasta.is_dir() and not pasta.name.startswith("."):
+        proj = dados.setdefault("projects", {}).setdefault(pasta.resolve().as_posix(), {})
+        proj["hasTrustDialogAccepted"] = True
+        print("confiável:", pasta)
+cfg.write_text(json.dumps(dados, indent=2, ensure_ascii=False), encoding="utf-8")
+'@ | python -
+```
+
+O script lista cada pasta que marcou. Isso equivale a responder **Yes, I trust this folder** em todas elas.
+
+- Use só na pasta dos **seus** projetos: o Claude Code passa a ler, editar e executar arquivos ali sem perguntar se você confia na pasta.
+- Vale para as pastas que **já existem**. Depois de criar projetos novos, rode de novo. Um projeto criado com `/novo` fora de casa continua parando na pergunta, como no caso abaixo.
+- Se algo der errado, volte o backup: `Copy-Item "$env:USERPROFILE\.claude.json.bak" "$env:USERPROFILE\.claude.json"`.
+
+### Se não fizer isso: abra cada projeto no PC uma vez
+
+- **Projetos que já existem:** antes de sair de casa, abra cada um no PC (`proj nome` ou `claude` dentro da pasta) e responda **Yes, I trust this folder**. A pergunta não volta mais naquela pasta.
+- **Projeto criado com `/novo` fora de casa:** a pasta é nova, então a sessão vai parar na pergunta. Responda quando chegar ao PC, ou crie o projeto antes, no PC, com `proj` → `0`.
 
 ## Comandos do bot
 

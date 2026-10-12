@@ -47,7 +47,11 @@ python claude-telegram-bot.py --parear       # send /parear CODE to the bot
 ```
 
 > [!IMPORTANT]
-> **Without this step, a new project will not open from your phone.** The first time Claude Code opens a folder, it asks on the PC *"Is this a project you trust?"*. Until someone answers, the session stays stuck and **never shows up in the app**. Before leaving home, open each project once on the PC (`claude` inside the folder, or `proj name`) and pick **Yes, I trust this folder**. This also applies to projects created with `/novo`.
+> **Without this step, a new project will not open from your phone.** The first time Claude Code opens a folder, it asks on the PC *"Is this a project you trust?"*. Until someone answers, the session stays stuck and **never shows up in the app**.
+> 1. **Recommended:** mark your project folders as trusted in `%USERPROFILE%\.claude.json` (set `projects["C:/path"].hasTrustDialogAccepted` to `true`) with the script in [the usage guide](docs/USO.md#recomendado-marcar-as-pastas-como-confiáveis-no-claudejson).
+> 2. **Otherwise:** open each project once on the PC before leaving home (`claude` inside the folder, or `proj name`) and pick **Yes, I trust this folder**.
+>
+> A project created with `/novo` while away always stops at the prompt until you answer it on the PC.
 
 The full guides are in Portuguese: [installation](docs/INSTALACAO.md) and [usage](docs/USO.md). The bot's commands and messages are in Portuguese too.
 
