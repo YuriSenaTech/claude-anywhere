@@ -46,6 +46,9 @@ python claude-telegram-bot.py --configurar   # @BotFather token + projects folde
 python claude-telegram-bot.py --parear       # send /parear CODE to the bot
 ```
 
+> [!IMPORTANT]
+> **Without this step, a new project will not open from your phone.** The first time Claude Code opens a folder, it asks on the PC *"Is this a project you trust?"*. Until someone answers, the session stays stuck and **never shows up in the app**. Before leaving home, open each project once on the PC (`claude` inside the folder, or `proj name`) and pick **Yes, I trust this folder**. This also applies to projects created with `/novo`.
+
 The full guides are in Portuguese: [installation](docs/INSTALACAO.md) and [usage](docs/USO.md). The bot's commands and messages are in Portuguese too.
 
 ## Security
@@ -57,6 +60,7 @@ The full guides are in Portuguese: [installation](docs/INSTALACAO.md) and [usage
 ## Limitations
 
 - The PC must be **on, with your user logged in**.
+- In a folder Claude Code has never opened, the session waits at the "Do you trust this folder?" prompt until you answer it on the PC.
 - Windows only (Windows Terminal, PowerShell, Task Scheduler).
 
 ## License

@@ -93,6 +93,8 @@ O bot responde "Pareado!". O código vale **10 minutos** e uma vez só. Para lib
 2. No PC, uma janela do terminal abre na pasta do projeto rodando o `claude`.
 3. Em uns 10 segundos, a sessão aparece no app do Claude → **Code** com o nome do projeto.
 
+> **Não apareceu?** Sem o passo abaixo, **projeto novo não abre pelo celular**. Olhe a janela no PC. Se ela mostra *"Quick safety check: Is this a project you created or one you trust?"*, é a pergunta de confiança que o Claude Code faz na **primeira vez** em cada pasta. Escolha **Yes, I trust this folder** e a sessão aparece no app. Pelo celular não dá para responder, então antes de sair de casa abra cada projeto uma vez no PC (`proj nome`, ou `claude` dentro da pasta) e confirme. Detalhes em [Pasta nova: a pergunta de confiança](USO.md#pasta-nova-a-pergunta-de-confiança).
+
 Pronto. Os comandos estão no [Guia de uso](USO.md).
 
 ## 8. (Opcional) Comando `proj` no PowerShell

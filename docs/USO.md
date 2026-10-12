@@ -9,6 +9,25 @@
 3. Em uns 10 segundos, abra o app do Claude → **Code**: a sessão aparece com o nome do projeto. Trabalhe por ali. Toda permissão que o Claude pedir aparece no app para você aprovar.
 4. De volta ao PC, a janela está aberta: continue a mesma sessão pelo teclado.
 
+## Pasta nova: a pergunta de confiança
+
+> [!IMPORTANT]
+> **Sem responder essa pergunta, projeto novo não abre pelo celular.** O bot abre a janela, mas a sessão fica parada no PC e nunca aparece no app.
+
+Na **primeira vez** que o Claude Code abre uma pasta, ele pergunta no terminal:
+
+```
+Quick safety check: Is this a project you created or one you trust?
+❯ No, exit
+  Yes, I trust this folder
+```
+
+É uma proteção do Claude Code, e o bot não responde por você. Enquanto ninguém responder no PC, a sessão fica parada e **não aparece no app**. Depois do "Yes", a pasta fica registrada como confiável e a pergunta não volta.
+
+O que fazer:
+- **Projetos que já existem:** antes de sair de casa, abra cada um uma vez no PC (`proj nome` ou `claude` dentro da pasta) e responda **Yes, I trust this folder**.
+- **Projeto criado com `/novo` fora de casa:** a pasta é nova, então a sessão vai parar nessa pergunta. Responda quando chegar ao PC, ou crie o projeto antes, no PC, com `proj` → `0`.
+
 ## Comandos do bot
 
 | Comando | O que faz |
@@ -87,7 +106,7 @@ Depois de editar o arquivo à mão, rode `.\install.ps1 -Reiniciar`.
 | :--- | :--- |
 | O bot não responde nada | PC desligado, ou nenhum usuário logado (a tarefa roda na sua sessão do Windows). Se o PC está ligado: `.\install.ps1 -Status`. |
 | Não responde só a você | Seu chat não está pareado (o log mostra "mensagem ignorada"). Rode `--parear`. |
-| "Abrindo..." mas a sessão não aparece no app | Olhe a janela no PC. O `claude` precisa estar logado na mesma conta do app e com Remote Control disponível. |
+| "Abrindo..." mas a sessão não aparece no app | Olhe a janela no PC. Se ela mostra "Is this a project you trust?", é a [pergunta de confiança](#pasta-nova-a-pergunta-de-confiança): responda **Yes** no PC. Senão, o `claude` precisa estar logado na mesma conta do app e com Remote Control disponível. |
 | A janela abre e fecha, ou "claude não encontrado" | O `claude` não está no PATH da sua sessão do Windows. Abra um terminal novo e teste `claude --version`. |
 | `/proj` diz que não há projetos | `projects_root` aponta para a pasta errada. Rode `--configurar` e `-Reiniciar`. |
 | Respostas em dobro | Não acontece: uma trava local impede duas instâncias do bot. |
@@ -96,6 +115,7 @@ Depois de editar o arquivo à mão, rode `.\install.ps1 -Reiniciar`.
 
 - Só funciona com o PC **ligado e logado**; o bot não liga o computador.
 - Cada `/proj` abre uma **janela nova**: abrir o mesmo projeto duas vezes cria duas sessões.
+- Em pasta que o Claude Code nunca abriu, a sessão para na [pergunta de confiança](#pasta-nova-a-pergunta-de-confiança) até alguém responder no PC.
 - Lista só as subpastas diretas de `projects_root`.
 
 ## Personalizar
